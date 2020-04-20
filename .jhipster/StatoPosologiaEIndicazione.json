@@ -1,5 +1,5 @@
 {
-    "name": "Azione",
+    "name": "StatoPosologiaEIndicazione",
     "fields": [
         {
             "fieldName": "codice",
@@ -10,20 +10,11 @@
             "fieldType": "String"
         }
     ],
-    "relationships": [
-        {
-            "relationshipType": "many-to-many",
-            "otherEntityName": "statoPratica",
-            "otherEntityRelationshipName": "azione",
-            "relationshipName": "statoPratica",
-            "otherEntityField": "id",
-            "ownerSide": true
-        }
-    ],
-    "changelogDate": "20200420095400",
-    "entityTableName": "t_azione",
+    "relationships": [],
+    "changelogDate": "20200420111500",
+    "entityTableName": "t_stato_posologia_indicazione",
     "dto": "mapstruct",
-    "pagination": "infinite-scroll",
+    "pagination": "no",
     "service": "serviceClass",
     "jpaMetamodelFiltering": false,
     "fluentMethods": true,

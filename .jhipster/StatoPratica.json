@@ -1,5 +1,5 @@
 {
-    "name": "Ruolo",
+    "name": "StatoPratica",
     "fields": [
         {
             "fieldName": "codice",
@@ -12,32 +12,26 @@
     ],
     "relationships": [
         {
-            "relationshipType": "one-to-many",
-            "otherEntityName": "categoriaNotifica",
-            "otherEntityRelationshipName": "ruolo",
-            "relationshipName": "categoriaNotifica"
+            "relationshipType": "many-to-many",
+            "otherEntityName": "azione",
+            "otherEntityRelationshipName": "statoPratica",
+            "relationshipName": "azione",
+            "otherEntityField": "id",
+            "ownerSide": false
         },
         {
             "relationshipType": "many-to-many",
-            "otherEntityName": "funzione",
-            "otherEntityRelationshipName": "ruolo",
-            "relationshipName": "funzione",
+            "otherEntityName": "ruolo",
+            "otherEntityRelationshipName": "statoPratica",
+            "relationshipName": "ruolo",
             "otherEntityField": "id",
-            "ownerSide": true
-        },
-        {
-            "relationshipType": "many-to-many",
-            "otherEntityName": "statoPratica",
-            "otherEntityRelationshipName": "ruolo",
-            "relationshipName": "statoPratica",
-            "otherEntityField": "id",
-            "ownerSide": true
+            "ownerSide": false
         }
     ],
-    "changelogDate": "20200420095700",
-    "entityTableName": "t_ruolo",
+    "changelogDate": "20200420111100",
+    "entityTableName": "t_stato_pratica",
     "dto": "mapstruct",
-    "pagination": "infinite-scroll",
+    "pagination": "no",
     "service": "serviceClass",
     "jpaMetamodelFiltering": false,
     "fluentMethods": true,

@@ -33,15 +33,9 @@
     "relationships": [
         {
             "relationshipType": "one-to-many",
-            "otherEntityName": "posologia",
+            "otherEntityName": "posologiaEIndicazione",
             "otherEntityRelationshipName": "farmaco",
-            "relationshipName": "posologia"
-        },
-        {
-            "relationshipType": "one-to-many",
-            "otherEntityName": "indicazioneTerapeutica",
-            "otherEntityRelationshipName": "farmaco",
-            "relationshipName": "indicazioneTerapeutica"
+            "relationshipName": "posologiaEIndicazione"
         },
         {
             "relationshipType": "one-to-many",

@@ -1,0 +1,85 @@
+{
+    "name": "Farmaco",
+    "fields": [
+        {
+            "fieldName": "nome",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "descrizione",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "principioAttivo",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "doseDefinitaDie",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "unitaDiMisura",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "is100Giorni",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "isInnovativo",
+            "fieldType": "Boolean"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "posologia",
+            "otherEntityRelationshipName": "farmaco",
+            "relationshipName": "posologia"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "indicazioneTerapeutica",
+            "otherEntityRelationshipName": "farmaco",
+            "relationshipName": "indicazioneTerapeutica"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "confezione",
+            "otherEntityRelationshipName": "farmaco",
+            "relationshipName": "confezione"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "pratica",
+            "otherEntityRelationshipName": "farmaco",
+            "relationshipName": "pratica"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "statoFarmaco",
+            "otherEntityRelationshipName": "farmaco",
+            "relationshipName": "statoFarmaco",
+            "otherEntityField": "codice"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "tipoNegoziazione",
+            "otherEntityRelationshipName": "farmaco",
+            "relationshipName": "tipoNegoziazione",
+            "otherEntityField": "codice"
+        }
+    ],
+    "changelogDate": "20200420094900",
+    "entityTableName": "t_farmaco",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "npr",
+    "applications": "*",
+    "microserviceName": "npr"
+}

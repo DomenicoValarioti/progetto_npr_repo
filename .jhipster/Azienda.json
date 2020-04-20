@@ -1,0 +1,47 @@
+{
+    "name": "Azienda",
+    "fields": [
+        {
+            "fieldName": "ragioneSociale",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "partitaIva",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "codiceFiscale",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "sedeLegale",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "pratica",
+            "otherEntityRelationshipName": "azienda",
+            "relationshipName": "pratica"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "notifica",
+            "otherEntityRelationshipName": "azienda",
+            "relationshipName": "notifica"
+        }
+    ],
+    "changelogDate": "20200420095600",
+    "entityTableName": "t_azienda",
+    "dto": "mapstruct",
+    "pagination": "infinite-scroll",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "npr",
+    "applications": "*",
+    "microserviceName": "npr"
+}

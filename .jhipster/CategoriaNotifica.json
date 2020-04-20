@@ -1,0 +1,42 @@
+{
+    "name": "CategoriaNotifica",
+    "fields": [
+        {
+            "fieldName": "codice",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "descrizione",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "notifica",
+            "otherEntityRelationshipName": "categoriaNotifica",
+            "relationshipName": "notifica",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "ruolo",
+            "otherEntityRelationshipName": "categoriaNotifica",
+            "relationshipName": "ruolo",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200420095900",
+    "entityTableName": "t_categoria_notifica",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "npr",
+    "applications": "*",
+    "microserviceName": "npr"
+}

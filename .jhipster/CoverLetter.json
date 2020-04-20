@@ -1,0 +1,66 @@
+{
+    "name": "CoverLetter",
+    "fields": [
+        {
+            "fieldName": "logo",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "image"
+        },
+        {
+            "fieldName": "destinatario",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "oggetto",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "mittente",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "testoEmail",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text"
+        },
+        {
+            "fieldName": "firma",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "image"
+        },
+        {
+            "fieldName": "documentoIdentita",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "any"
+        },
+        {
+            "fieldName": "idRepository",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "dataInserimento",
+            "fieldType": "Instant"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "pratica",
+            "otherEntityRelationshipName": "coverLetter",
+            "relationshipName": "pratica",
+            "ownerSide": false
+        }
+    ],
+    "changelogDate": "20200420095100",
+    "entityTableName": "t_cover_letter",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "npr",
+    "applications": "*",
+    "microserviceName": "npr"
+}

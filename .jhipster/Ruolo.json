@@ -1,0 +1,49 @@
+{
+    "name": "Ruolo",
+    "fields": [
+        {
+            "fieldName": "codice",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "descrizione",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "categoriaNotifica",
+            "otherEntityRelationshipName": "ruolo",
+            "relationshipName": "categoriaNotifica"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "funzione",
+            "otherEntityRelationshipName": "ruolo",
+            "relationshipName": "funzione",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "statoProcedura",
+            "otherEntityRelationshipName": "ruolo",
+            "relationshipName": "statoProcedura",
+            "otherEntityField": "id",
+            "ownerSide": true
+        }
+    ],
+    "changelogDate": "20200420095700",
+    "entityTableName": "t_ruolo",
+    "dto": "mapstruct",
+    "pagination": "infinite-scroll",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "npr",
+    "applications": "*",
+    "microserviceName": "npr"
+}

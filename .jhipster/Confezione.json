@@ -1,0 +1,70 @@
+{
+    "name": "Confezione",
+    "fields": [
+        {
+            "fieldName": "codiceAICEuropeo",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "minlength",
+                "maxlength"
+            ],
+            "fieldValidateRulesMinlength": "9",
+            "fieldValidateRulesMaxlength": "9"
+        },
+        {
+            "fieldName": "proceduraAutorizzazione",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "dataParereEMA",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "dataDecisioneEuropea",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "prezzoAlPubblico",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "prezzoExFacory",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "classeRimborsabilita",
+            "otherEntityRelationshipName": "confezione",
+            "relationshipName": "classeRimborsabilita",
+            "otherEntityField": "codice"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "regimeFornitura",
+            "otherEntityRelationshipName": "confezione",
+            "relationshipName": "regimeFornitura",
+            "otherEntityField": "codice"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "farmaco",
+            "otherEntityRelationshipName": "confezione",
+            "relationshipName": "farmaco",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200420100000",
+    "entityTableName": "t_confezione",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "npr",
+    "applications": "*",
+    "microserviceName": "npr"
+}

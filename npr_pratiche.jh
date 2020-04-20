@@ -48,16 +48,12 @@ entity CoverLetter(t_cover_letter){
     dataInserimento Instant
 }
 
-entity Posologia(t_posologia){
+entity PosologiaEIndicazione(t_posologia_indicazione){
 	id Integer
-    descrizione String
-    nuovaDescrizione String
-}
-
-entity IndicazioneTerapeutica(t_indicazione_terapeutica){
-	id Integer
-    descrizione String
-    nuovaDescrizione String
+    descrizionePosologia String
+    nuovaDescrizionePosologia String
+    descrizioneIndicazione String
+    nuovaDescrizioneIndicazione String
 }
 
 entity Azione(t_azione) {
@@ -114,7 +110,7 @@ entity StatoFarmaco(t_stato_farmaco){
 	codice String
 	descrizione String
 }
-entity StatoProcedura(t_stato_procedura){
+entity StatoPratica(t_stato_pratica){
 	codice String
 	descrizione String
 }
@@ -130,14 +126,11 @@ entity TipoProcedura(t_tipo_procedura){
 	codice String
 	descrizione String
 }
-entity StatoPosologia(t_stato_posologia){
+entity StatoPosologiaEIndicazione(t_stato_posologia_indicazione){
 	codice String
 	descrizione String
 }
-entity StatoIndicazioneTerapeutica(t_stato_indicazione_terapeutica){
-	codice String
-	descrizione String
-}
+
 entity ClasseRimborsabilita(t_classe_rimborsabilita){
 	codice String
 	descrizione String
@@ -145,6 +138,13 @@ entity ClasseRimborsabilita(t_classe_rimborsabilita){
 entity RegimeFornitura(t_regime_fornitura){
 	codice String
 	descrizione String
+}
+
+entity StoricoStatoPratica(t_storico_stato_pratica){
+	id Integer
+    utent String
+    codiceVecchioStato String
+	codiceNuovoStato String
 }
 /***** -- *****/
 
@@ -159,16 +159,15 @@ relationship ManyToMany {
     Ruolo to Funzione
     TipoNegoziazione{tipoAllegato(codice)} to TipoAllegato{tipoNegoziazione(codice)}
     CategoriaNotifica to Notifica
-    Azione to StatoProcedura
-    Ruolo to StatoProcedura
+    Azione to StatoPratica
+    Ruolo to StatoPratica
 }
 
 relationship OneToMany {
 	Azienda to Pratica // Attento alla lista delle pratiche
     Azienda to Notifica
     Pratica to Allegato
-    Farmaco to Posologia
-    Farmaco to IndicazioneTerapeutica   
+    Farmaco to PosologiaEIndicazione   
     Farmaco to Confezione
     Ruolo to CategoriaNotifica
     Farmaco to Pratica 
@@ -176,16 +175,13 @@ relationship OneToMany {
 
 relationship ManyToOne {
     Pratica{tipoProcedura(codice)} to TipoProcedura
-    Pratica{statoProcedura(codice)} to StatoProcedura
+    Pratica{statoProcedura(codice)} to StatoPratica
     Farmaco{statoFarmaco(codice)} to StatoFarmaco
     Farmaco{tipoNegoziazione(codice)} to TipoNegoziazione    
     Allegato{tipoAllegato(codice)} to TipoAllegato
-    Posologia{statoPosologia(codice)} to StatoPosologia
+    PosologiaEIndicazione{statoPosologiaEIndicazione(codice)} to StatoPosologiaEIndicazione
     Confezione{classeRimborsabilita(codice)} to ClasseRimborsabilita
     Confezione{regimeFornitura(codice)} to RegimeFornitura
-    IndicazioneTerapeutica{statoIndicazioneTerapeutica(codice)} 
-    	to 
-        StatoIndicazioneTerapeutica
 }
 
 relationship OneToOne {

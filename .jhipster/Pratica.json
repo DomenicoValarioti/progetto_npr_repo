@@ -1,0 +1,101 @@
+{
+    "name": "Pratica",
+    "fields": [
+        {
+            "fieldName": "regionName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "codiceProcedura",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "dettagli",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "funzionarioAssegnatario",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "scadenza",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "tariffa",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "bollo",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "dataChiusuraProcedura",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "idProcessoBpm",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "dataCreazione",
+            "fieldType": "Instant"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "coverLetter",
+            "otherEntityRelationshipName": "pratica",
+            "relationshipName": "coverLetter",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "allegato",
+            "otherEntityRelationshipName": "pratica",
+            "relationshipName": "allegato"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "tipoProcedura",
+            "otherEntityRelationshipName": "pratica",
+            "relationshipName": "tipoProcedura",
+            "otherEntityField": "codice"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "statoProcedura",
+            "otherEntityRelationshipName": "pratica",
+            "relationshipName": "statoProcedura",
+            "otherEntityField": "codice"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "azienda",
+            "otherEntityRelationshipName": "pratica",
+            "relationshipName": "azienda",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "farmaco",
+            "otherEntityRelationshipName": "pratica",
+            "relationshipName": "farmaco",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200420094800",
+    "entityTableName": "t_pratica",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "npr",
+    "applications": "*",
+    "microserviceName": "npr"
+}

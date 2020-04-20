@@ -1,0 +1,27 @@
+{
+    "name": "StatoFarmaco",
+    "fields": [
+        {
+            "fieldName": "codice",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "descrizione",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20200420100100",
+    "javadoc": "TIPOLOGICHE",
+    "entityTableName": "t_stato_farmaco",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "npr",
+    "applications": "*",
+    "microserviceName": "npr"
+}

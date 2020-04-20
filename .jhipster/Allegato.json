@@ -1,0 +1,45 @@
+{
+    "name": "Allegato",
+    "fields": [
+        {
+            "fieldName": "estensione",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "idRepository",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "dataInserimento",
+            "fieldType": "Instant"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "tipoAllegato",
+            "otherEntityRelationshipName": "allegato",
+            "relationshipName": "tipoAllegato",
+            "otherEntityField": "codice"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "pratica",
+            "otherEntityRelationshipName": "allegato",
+            "relationshipName": "pratica",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200420095000",
+    "entityTableName": "t_allegato",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "npr",
+    "applications": "*",
+    "microserviceName": "npr"
+}

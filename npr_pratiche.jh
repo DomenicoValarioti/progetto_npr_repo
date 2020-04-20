@@ -143,7 +143,7 @@ entity ClasseRimborsabilita(t_classe_rimborsabilita){
 	descrizione String
 }
 entity RegimeFornitura(t_regime_fornitura){
-	codice StringTipoAllegato
+	codice String
 	descrizione String
 }
 /***** -- *****/

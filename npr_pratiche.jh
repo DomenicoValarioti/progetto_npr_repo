@@ -1,0 +1,214 @@
+entity Pratica(t_pratica) {
+	id						Integer
+	regionName 				 String
+    codiceProcedura            String
+    dettagli                 String
+    funzionarioAssegnatario  String
+    scadenza                 Instant
+    tariffa 				 String
+    bollo 					 String
+    dataChiusuraProcedura 	 Instant
+    /* idenificativo del processo BPM*/
+    idProcessoBpm String
+    dataCreazione Instant
+}
+
+entity Farmaco(t_farmaco) {
+	id Integer
+    nome String
+    descrizione String
+    // descrizioneATC
+	// codiceATC
+	principioAttivo String
+    doseDefinitaDie String
+	unitaDiMisura String
+    is100Giorni Boolean
+    isInnovativo Boolean
+}
+
+entity Allegato(t_allegato){
+	id Integer
+ 	estensione String
+    /*identificativo del repository del documento - Mongo*/
+    idRepository String
+    dataInserimento Instant
+}
+
+entity CoverLetter(t_cover_letter){
+	id Integer
+ 	logo ImageBlob
+    destinatario String
+    oggetto String
+    mittente String
+    testoEmail TextBlob
+    firma ImageBlob
+    documentoIdentita Blob
+    /*identificativo del repository del documento - Mongo*/
+    idRepository String
+    dataInserimento Instant
+}
+
+entity Posologia(t_posologia){
+	id Integer
+    descrizione String
+    nuovaDescrizione String
+}
+
+entity IndicazioneTerapeutica(t_indicazione_terapeutica){
+	id Integer
+    descrizione String
+    nuovaDescrizione String
+}
+
+entity Azione(t_azione) {
+	id           Integer
+    codice       String
+    descrizione  String
+}
+
+entity Notifica(t_notifica) {
+	id           Integer
+    codice       String
+    descrizione  String
+}
+
+entity Azienda(t_azienda) {
+	id               Integer
+    ragioneSociale   String
+    partitaIva       String
+    codiceFiscale    String
+    sedeLegale       String
+}
+
+entity Ruolo(t_ruolo) {
+	id           Integer
+    codice       String
+    descrizione  String
+}
+
+entity Funzione(t_funzione) {
+	id           Integer
+    codice       String
+    descrizione  String
+}
+
+entity CategoriaNotifica(t_categoria_notifica) {
+	id           Integer
+    codice       String
+    descrizione  String
+}
+
+// TODO Inserisci anche i campi restituiti dall BUF
+entity Confezione(t_confezione){
+	// codice a 9 cifre, obbligatorio
+	codiceAICEuropeo String minlength(9) maxlength(9)
+    proceduraAutorizzazione String 
+    dataParereEMA Instant 
+	dataDecisioneEuropea Instant
+    prezzoAlPubblico String
+    prezzoExFacory String
+}
+
+/***** TIPOLOGICHE *****/
+entity StatoFarmaco(t_stato_farmaco){
+	codice String
+	descrizione String
+}
+entity StatoProcedura(t_stato_procedura){
+	codice String
+	descrizione String
+}
+entity TipoAllegato(t_tipo_allegato){
+	codice String
+	descrizione String
+}
+entity TipoNegoziazione(t_tipo_negoziazione){
+	codice String
+	descrizione String
+}
+entity TipoProcedura(t_tipo_procedura){
+	codice String
+	descrizione String
+}
+entity StatoPosologia(t_stato_posologia){
+	codice String
+	descrizione String
+}
+entity StatoIndicazioneTerapeutica(t_stato_indicazione_terapeutica){
+	codice String
+	descrizione String
+}
+entity ClasseRimborsabilita(t_classe_rimborsabilita){
+	codice String
+	descrizione String
+}
+entity RegimeFornitura(t_regime_fornitura){
+	codice String
+	descrizione String
+}
+/***** -- *****/
+
+
+
+
+
+
+
+relationship ManyToMany {
+	// TODO Pratica to Azione
+    Ruolo to Funzione
+    TipoNegoziazione{tipoAllegato(codice)} to TipoAllegato{tipoNegoziazione(codice)}
+    CategoriaNotifica to Notifica
+    Azione to StatoProcedura
+    Ruolo to StatoProcedura
+}
+
+relationship OneToMany {
+	Azienda to Pratica // Attento alla lista delle pratiche
+    Azienda to Notifica
+    Pratica to Allegato
+    Farmaco to Posologia
+    Farmaco to IndicazioneTerapeutica   
+    Farmaco to Confezione
+    Ruolo to CategoriaNotifica
+    Farmaco to Pratica 
+}
+
+relationship ManyToOne {
+    Pratica{tipoProcedura(codice)} to TipoProcedura
+    Pratica{statoProcedura(codice)} to StatoProcedura
+    Farmaco{statoFarmaco(codice)} to StatoFarmaco
+    Farmaco{tipoNegoziazione(codice)} to TipoNegoziazione    
+    Allegato{tipoAllegato(codice)} to TipoAllegato
+    Posologia{statoPosologia(codice)} to StatoPosologia
+    Confezione{classeRimborsabilita(codice)} to ClasseRimborsabilita
+    Confezione{regimeFornitura(codice)} to RegimeFornitura
+    IndicazioneTerapeutica{statoIndicazioneTerapeutica(codice)} 
+    	to 
+        StatoIndicazioneTerapeutica
+}
+
+relationship OneToOne {
+	// la pratica ha dentro la coverletter mentre la cover non ha la pratica
+	Pratica to CoverLetter
+}
+
+
+
+
+//enum Language {
+//    ITALIANO, ENGLISH
+//}
+
+// Set pagination options
+paginate Azienda, Azione, Ruolo with infinite-scroll
+paginate Pratica, Notifica with pagination
+
+// Use Data Transfert Objects (DTO)
+ dto * with mapstruct
+
+// Set service options to all except few
+//service all with serviceImpl except Employee, Job
+
+// Set an angular suffix
+// angularSuffix * with mySuffix

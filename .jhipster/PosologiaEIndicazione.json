@@ -1,0 +1,49 @@
+{
+    "name": "PosologiaEIndicazione",
+    "fields": [
+        {
+            "fieldName": "descrizionePosologia",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "nuovaDescrizionePosologia",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "descrizioneIndicazione",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "nuovaDescrizioneIndicazione",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "statoPosologiaEIndicazione",
+            "otherEntityRelationshipName": "posologiaEIndicazione",
+            "relationshipName": "statoPosologiaEIndicazione",
+            "otherEntityField": "codice"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "farmaco",
+            "otherEntityRelationshipName": "posologiaEIndicazione",
+            "relationshipName": "farmaco",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200420110200",
+    "entityTableName": "t_posologia_indicazione",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "npr",
+    "applications": "*",
+    "microserviceName": "npr"
+}

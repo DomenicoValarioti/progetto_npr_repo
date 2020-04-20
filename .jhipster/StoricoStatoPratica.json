@@ -1,0 +1,30 @@
+{
+    "name": "StoricoStatoPratica",
+    "fields": [
+        {
+            "fieldName": "utent",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "codiceVecchioStato",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "codiceNuovoStato",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20200420111800",
+    "entityTableName": "t_storico_stato_pratica",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "npr",
+    "applications": "*",
+    "microserviceName": "npr"
+}
